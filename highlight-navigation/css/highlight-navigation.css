@@ -1,0 +1,6 @@
+.highlight-navigation-container table{
+ border-collapse: collapse;
+}
+.highlight-navigation-container .selected{
+ background: #dde3ff;
+}

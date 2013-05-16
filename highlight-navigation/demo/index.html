@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+ <!--[if lt IE 7 ]> <html lang="en" class="ie6 oldie no-js"> <![endif]-->
+ <!--[if IE 7 ]> <html lang="en" class="ie7 oldie no-js"> <![endif]-->
+ <!--[if IE 8 ]> <html lang="en" class="ie8 oldie no-js"> <![endif]-->
+ <!--[if IE 9 ]> <html lang="en" class="ie9 no-js"> <![endif]-->
+ <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+ <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1;">
+  <title>Usage of Highlight Navigation plugin with a Mustache template & TABLE</title>
+  <link rel="stylesheet" type="text/css" href="../css/highlight-navigation.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+  <script src="../js/jquery.highlight-navigation.js"></script>
+ </head>
+ <body>
+  <div id="users"></div>
+  <script id="usersTpl" type="text/template">
+   <h1>Listing Users</h1>
+   <table class="table">
+    <thead>
+     <tr>
+      <th>id</th>
+      <th>username</th>
+      <th>name</th>
+      <th>email</th>
+     </tr>
+    </thead>
+    <tbody>
+     {{#users}}
+      <tr data-id="{{id}}">
+       <td>{{id}}</td>
+       <td>{{username}}</td>
+       <td>{{first_name}} {{last_name}}</td>
+       <td>{{email}}</td>
+      </tr>
+     {{/users}}
+    </tbody>
+   </table>
+  </script>
+  <script>
+   $(document).ready(function(){
+    $.getJSON("users.json", function(data){
+     var template = $("#usersTpl").html(),
+         html = Mustache.to_html(template, data);
+     $("#users")
+      .html(html);
+     $(".table")
+      .highlightNavigation({
+       actionKeyPress: function(event, data){ //When action key (enter) is pressed, or row is clicked, go to applicable record.
+        var $this = $(this),
+            $selectedRow = $this.highlightNavigation("getSelectedItem"),
+            keyCode = $this.highlightNavigation("getKeyCode"),
+            $selectedRowID = $selectedRow.data("id");
+        if(typeof $selectedRowID !== "undefined"){
+         location.href = "users.html#" + $selectedRowID;
+        }
+       },
+       itemClick: function(event, data){ //When action key (enter) is pressed, or row is clicked, go to applicable record.
+        var $this = $(this),
+            $selectedRow = $this.highlightNavigation("getSelectedItem"),
+            $selectedRowID = $selectedRow.data("id");
+        if(typeof $selectedRowID !== "undefined"){
+         location.href = "users.html#" + $selectedRowID;
+        }
+       }
+      });
+     });
+   });
+  </script>
+ </body>
+</html>

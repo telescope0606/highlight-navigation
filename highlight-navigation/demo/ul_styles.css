@@ -1,0 +1,7 @@
+ul{
+ width: 600px;
+ display: block;
+}
+ul li a{
+ text-align: right;
+}
