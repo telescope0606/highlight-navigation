@@ -23,6 +23,11 @@ Contributing to Highlight Navigation
 
 Contributions and pull requests are very welcome. 
 
+Highlight Navigation Demos
+---------------------------------------
+Demos are available here: http://telescope0606.github.io/
+
+
 Highlight Navigation Credits, Donations
 ---------------------------------------
 
