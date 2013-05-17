@@ -4,7 +4,7 @@
  * Description: Provides keyboard and mouse navigation and highlighting for elements with items, such as rows belonging to tables, li's belonging to ul's and ol's, and a's belonging to nav's. Currently only tested with these elements, but should allow other elements to work as well, as long as there are no extraneous children that you do not want to be selectable within those. If there are, you will need to modify the switch statement to handle those cases. Please test and extend if you see a need to. At this time, it will only work for one plugin instance.
  */
 ;(function($){
-  methods = {
+  var methods = {
    init: function(options){
     var self = this,
         $self = $(this);
@@ -12,23 +12,20 @@
     self.wrapper = $("<div class=\"highlight-navigation-container\"/>");
     $.fn.highlightNavigation.self
      .after(self.wrapper)
-      .detach()
-       .appendTo(self.wrapper);
+     .detach()
+     .appendTo(self.wrapper);
     $.fn.highlightNavigation.elemObjTag = $.fn.highlightNavigation.self.prop("tagName");
     settings = $.extend({}, $.fn.highlightNavigation.defaults, options);
-    this.selectedItem = {};
-    $(document).on("keydown", $.proxy(methods.keyPress, self)); //bind keydown to keyPress function.
-    $(document).on("click", $.proxy(methods.itemClick, self)); //bind click to itemClick function.
-    $(document).on("touchstart", $.proxy(methods.itemClick, self)); //bind touchstart (mobile) to itemClick function.
+    self.selectedItem = {};
+    $(document).on("keydown.highlightNav", $.proxy(methods.keyPress, self)); //bind keydown to keyPress function.
+    $(document).on("click.highlightNav", $.proxy(methods.itemClick, self)); //bind click to itemClick function.
+    $(document).on("touchstart.highlightNav", $.proxy(methods.itemClick, self)); //bind touchstart (mobile) to itemClick function.
     methods.selectFirst();
   },
   selectFirst: function(){
-   var $firstItem = {},
-       $allItems = methods.getAllItems();
-   if($allItems){
-    $firstItem = $allItems.eq(0);
-    $firstItem.addClass("selected");
-    $.fn.highlightNavigation.selectedItem = $firstItem; //Set public selectedItem var to first item.
+   var $allItems = methods.getAllItems();
+   if($allItems.length){
+    $.fn.highlightNavigation.selectedItem = $allItems.eq(0).addClass("selected"); //Set selectedItem var to first item.
     settings.onSelect(); //onSelect callback.
     settings.selectFirst(); //selectFirst callback.
    }
@@ -94,7 +91,7 @@
        $itemClicked = {},
        $selectedItem = methods.getSelectedItem();
    evt.preventDefault();
-   if($("li, tr").has($(itemClicked)).length){ //if click event occured on an element contained within the item, then set selection to the containing item.
+   if($("li, tr").has($(itemClicked)).length){ //If click event occured on an element contained within the item, then set selection to the containing item.
     $itemClicked = $("li, tr").has($(itemClicked));
    }
    else{
@@ -121,7 +118,7 @@
     case "NAV":
      return $.fn.highlightNavigation.self.find("a");
      break;
-    case $.fn.highlightNavigation.elemObjTag.length: //Catch all for other elements. This grabs all of the children belonging to it. You may want to override this for certain elements with items you do not want included, ie: if there are header, h1, etc. tags inside of your element.
+    case $.fn.highlightNavigation.elemObjTag.length: //Catch all for other elements. This grabs all of the children belonging to it. You will want to override this for certain elements with items you do not want included, ie: if there are header, h1, etc. tags inside of your element.
      return $.fn.highlightNavigation.self.children();
      break;
     default:
@@ -145,11 +142,8 @@
    return $.fn.highlightNavigation.keyCode;
   },
   destroy: function(){ //Undo everything
-   var self = this;
    methods.getSelectedItem().removeClass("selected"); //Remove selected class
-   $(document).off("keydown", $.proxy(methods.keyPress, self)); //unbind keydown from keyPress function.
-   $(document).off("click", $.proxy(methods.itemClick, self)); //unbind click from itemClick function.
-   $(document).off("touchstart", $.proxy(methods.itemClick, self)); //unbind touchstart (mobile) from itemClick function.
+   $(document).off(".highlightNav"); //unbind events.
    $.fn.highlightNavigation.self.unwrap(); //Remove container element
   }
  };
