@@ -1,6 +1,7 @@
 /**
- * Name: highlight-navigation jQuery plugin
+ * Name: Highlight Navigation jQuery plugin
  * Author: Stephanie Fischer
+ * Demos & documentation: https://github.com/telescope0606/highlight-navigation
  * Description: Provides keyboard and mouse navigation and highlighting for elements with items, such as rows belonging to tables, li's belonging to ul's and ol's, and a's belonging to nav's. Currently only tested with these elements, but should allow other elements to work as well, as long as there are no extraneous children that you do not want to be selectable within those. If there are, you will need to modify the switch statement to handle those cases. Please test and extend if you see a need to. At this time, it will only work for one plugin instance.
  */
 ;(function($){
@@ -90,18 +91,20 @@
        $allItems = methods.getAllItems(),
        $itemClicked = {},
        $selectedItem = methods.getSelectedItem();
-   evt.preventDefault();
-   if($("li, tr").has($(itemClicked)).length){ //If click event occured on an element contained within the item, then set selection to the containing item.
-    $itemClicked = $("li, tr").has($(itemClicked));
-   }
-   else{
-    $itemClicked = $(itemClicked);
-   }
-   if($itemClicked.parent().prop("tagName") !== "THEAD"){ //If table, only apply selection for the rows that are not in the table header.
-    $allItems.removeClass("selected"); //Remove selected class from all other items.
-    $itemClicked.addClass("selected"); //Apply selected class to item just clicked.
-    $.fn.highlightNavigation.selectedItem = $itemClicked; //Set selectedItem.
-    settings.itemClick(); //itemClick callback
+   if(evt.which === 1){ //If a left click, handle click event, otherwise allow normal click behavior
+    evt.preventDefault();
+    if($("li, tr").has($(itemClicked)).length){ //If click event occured on an element contained within the item, then set selection to the containing item.
+     $itemClicked = $("li, tr").has($(itemClicked));
+    }
+    else{
+     $itemClicked = $(itemClicked);
+    }
+    if($itemClicked.parent().prop("tagName") !== "THEAD"){ //If table, only apply selection for the rows that are not in the table header.
+     $allItems.removeClass("selected"); //Remove selected class from all other items.
+     $itemClicked.addClass("selected"); //Apply selected class to item just clicked.
+     $.fn.highlightNavigation.selectedItem = $itemClicked; //Set selectedItem.
+     settings.itemClick(); //itemClick callback
+    }
    }
   },
   getAllItems: function(){ //Return all items.
