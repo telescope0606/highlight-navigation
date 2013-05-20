@@ -2,7 +2,7 @@
 ------------------------
 
 
-Highlight Navigation is a plugin that enables both keyboard and mouse navigation and highlighting for items belonging to elements. For example, this plugin is good for highlighting table rows when you press the down key or click on the row, as well as applying actions upon pressing the “enter” key (or any other key, configurable in the options) or clicking on a row. Other elements that this plugin has been tested for and confirmed working are: UL, OL, and NAV. Additional elements should work as well, with some caveats that I will discuss below. For ease of configuration, the plugin is left open in that all methods are exposed, and there are callbacks for all of the plugin’s events.
+Highlight Navigation is a plugin that enables both keyboard and mouse navigation and highlighting for items belonging to elements. For example, this plugin is good for highlighting table rows when you press the down key, as well as applying actions upon pressing the “enter” key (or any other key, configurable in the options) or clicking on a row. Other elements that this plugin has been tested for and confirmed working are: UL, OL, and NAV. Additional elements should work as well, with some caveats that I will discuss below. For ease of configuration, the plugin is left open in that all methods are exposed, and there are callbacks for all of the plugin’s events.
 
 **jQuery support**: 1.7.1+
 
