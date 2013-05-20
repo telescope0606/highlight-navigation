@@ -1,0 +1,35 @@
+{
+"name": "highlight-navigation",
+"title": "Highlight Navigation",
+"description": "jQuery plugin that enables both keyboard and mouse navigation and highlighting for items belonging to elements. For example, this plugin is good for highlighting table rows when you press the down key, as well as applying actions upon pressing the enter key (or any other key, configurable in the options) or clicking on a row.",
+"keywords": [
+"keyboard",
+"navigation",
+"highlighting"
+],
+"version": "1.1.1",
+"author": {
+"name": "Stephanie Fischer",
+"url": "http://telescope0606.github.io"
+},
+"maintainers": [
+{
+"name": "Stephanie Fischer",
+"email": "stephanief010@gmail.com",
+"url": "http://telescope0606.github.io"
+}
+],
+"licenses": [
+{
+"type": "MIT",
+"url": "https://github.com/telescope0606/highlight-navigation/blob/master/license.txt"
+}
+],
+"bugs": "https://github.com/telescope0606/highlight-navigation/issues",
+"homepage": "https://github.com/telescope0606/highlight-navigation",
+"docs": "https://github.com/telescope0606/highlight-navigation/",
+"download": "https://github.com/telescope0606/highlight-navigation/",
+"dependencies": {
+"jquery": ">=1.7.1"
+}
+}
