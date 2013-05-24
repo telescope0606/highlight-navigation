@@ -68,40 +68,13 @@ These methods are public, and callable from your code. Each of these methods has
  - **selectFirst**: Selects the first item.
  - **selectNext**: Selects the next item. 
 
-> This method skips the next child if it
-> is considered extraneous. Extraneous
-> children are items that you commonly
-> would not want to apply a selection &
-> highlight to. An example is a BR tag
-> within a NAV. Therefore, there is some
-> logic in this method that explicitly
-> looks for the next LI child, if the
-> plugin is attached to a UL or OL, or
-> the next A child, if the plugin is
-> attached to a NAV. Otherwise, it
-> behaves just as you would expect, by
-> using the next and prev jQuery
-> functions.
+     This method skips the next child if it is considered extraneous. Extraneous children are items that you commonly would not want to apply a selection & highlight to. An example is a BR tag within a NAV. Therefore, there is some logic in this method that explicitly looks for the next LI child, if the plugin is attached to a UL or OL, or the next A child, if the plugin is attached to a NAV. Otherwise, it behaves just as you would expect, by using the next and prev jQuery functions.
 
  - **selectItem**: Selects an item at a specified index.
  - **keyPress**: Processes a keyboard event.
  - **getAllItems**: Returns an object containing all items in the element.
 
-> This method also skips any extraneous
-> children belonging to the element.
-> getAllItems explicitly looks for TBODY
-> > TR belonging to TABLE, LI belonging to UL or OL, and A belonging to NAV.
-> As mentioned previously, these are the
-> only elements that the plugin has been
-> tested with so far. However, Highlight
-> Navigation was built to work with
-> other elements as well. If you have no
-> extraneous children within the other
-> element you want to use, it will work
-> just fine. If you do have extraneous
-> children, then you will need to modify
-> the switch statement to include a case
-> statement for it.
+     This method also skips any extraneous children belonging to the element. getAllItems explicitly looks for TBODY > TR belonging to TABLE, LI belonging to UL or OL, and A belonging to NAV. As mentioned previously, these are the only elements that the plugin has been tested with so far. However, Highlight Navigation was built to work with other elements as well. If you have no extraneous children within the other element you want to use, it will work just fine. If you do have extraneous children, then you will need to modify the switch statement to include a case statement for it.
 
  - **getSelectedItem**: Returns an object containing the selected item.
  - **getKeyCode**: Returns the key code that was pressed.
@@ -110,8 +83,7 @@ Additional Callbacks
 --------------------
 
  - **onSelect**: Whenever an item is selected, this callback will execute.
- - **actionKeyPress**: Whenever an action key (ie: Enter) is pressed,
-   this callback will execute.
+ - **actionKeyPress**: Whenever an action key (ie: Enter) is pressed, this callback will execute.
 
 Usage Examples
 --------------
@@ -124,7 +96,7 @@ Usage Examples
 
 
 ----------
-<br>
+
 
 *Include necessary CSS and JS files*
 
