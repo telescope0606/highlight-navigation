@@ -7,9 +7,7 @@
 ;(function($){
   var methods = {
    init: function(options){
-    var self = this,
-        $self = $(this);
-    $.fn.highlightNavigation.self = $self;
+    $.fn.highlightNavigation.self = this;
     self.wrapper = $("<div class=\"highlight-navigation-container\"/>");
     $.fn.highlightNavigation.self
      .after(self.wrapper)
@@ -18,7 +16,9 @@
     $.fn.highlightNavigation.elemObjTag = $.fn.highlightNavigation.self.prop("tagName");
     settings = $.extend({}, $.fn.highlightNavigation.defaults, options);
     self.selectedItem = {};
-    $(document).on("keydown.highlightNav", $.proxy(methods.keyPress, self)); //bind keydown to keyPress function.
+    if(settings.keyboardNav){
+     $(document).on("keydown.highlightNav", $.proxy(methods.keyPress, self)); //bind keydown to keyPress function.
+    }
     $(document).on("click.highlightNav", $.proxy(methods.itemClick, self)); //bind click to itemClick function.
     $(document).on("touchstart.highlightNav", $.proxy(methods.itemClick, self)); //bind touchstart (mobile) to itemClick function.
     methods.selectFirst();
@@ -155,6 +155,7 @@
    navPrevItemKey: 38, //Up arrow
    navNextItemKey: 40, //Down arrow
    navActionKey: 13, //Enter
+   keyboardNav: true, //Whether to enable keyboard navigation
    selectFirst: function(){},
    selectNext: function(){},
    onSelect: function(){},
