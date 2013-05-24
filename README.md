@@ -44,6 +44,8 @@ API
 Options
 -------
 
+- **keyboardNav**: Whether to enable keyboard navigation. *Optional.* Default: *true*.
+
 The following options map the keyboard key codes for handling by the plugin. For a full reference of key codes that can be used, please see: http://protocolsofmatrix.blogspot.com/2007/09/javascript-keycode-reference-table-for.html
 
 - **navPrevItemKey**: The key to map to previous item. *Optional.*
