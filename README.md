@@ -3,6 +3,7 @@
 
 
 Highlight Navigation enables keyboard, mouse, and touch element highlighting and navigation. Highlight and navigate table rows by pressing configurable keys. Perform any action specified via callback by upon pressing enter key on a row. Built to work for all elements with children. Other elements that this plugin has been tested for and confirmed working are: UL, OL, and NAV. Additional elements should work as well, with some caveats that I will discuss below. For ease of configuration, the plugin is left open in that all methods are exposed, and there are callbacks for all of the plugin’s events.
+
 **jQuery support**: 1.7.1+
 
 Testing
