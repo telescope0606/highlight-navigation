@@ -2,7 +2,7 @@
  * Name: Highlight Navigation jQuery plugin
  * Author: Stephanie Fischer
  * Demos & documentation: https://github.com/telescope0606/highlight-navigation
- * Description: Provides keyboard and mouse navigation and highlighting for elements with items, such as rows belonging to tables, li's belonging to ul's and ol's, and a's belonging to nav's. Currently only tested with these elements, but should allow other elements to work as well, as long as there are no extraneous children that you do not want to be selectable within those. If there are, you will need to modify the switch statement to handle those cases. Please test and extend if you see a need to. At this time, it will only work for one plugin instance.
+ * Description: Provides keyboard and mouse navigation and highlighting for elements with items, such as rows belonging to tables, li's belonging to ul's and ol's, a's belonging to nav's, and dt's belonging to dl's. Currently only tested with these elements, but other elements should work as well, as long as there are no extraneous children that you do not want to be selectable within those. If there are, you will need to modify a couple spots to handle those cases. Those spots are denoted in the comments. Please extend if you see a need to. At this time, it will only work for one plugin instance. To do: enable more than one plugin instance & use a key to switch between them, allow a code edit in just one spot to ease modification needs for non-explicitly handled elements containing those extraneous children.
  */
 ;(function($){
   var methods = {
@@ -35,29 +35,41 @@
    var $selectedItem = {},
        $currentSelectedItem = methods.getSelectedItem(),
        $allItems = methods.getAllItems();
-   if(direction === -1 && (($.fn.highlightNavigation.elemObjTag === "NAV" && $currentSelectedItem.prevAll("a").length) || typeof $currentSelectedItem.prev().prop("tagName") !== "undefined")){ //Go to previous item, if it exists, and apply selected class.
+   if(typeof $currentSelectedItem === "undefined"){
+    $.error("Ensure that your elements are correctly set up. Relationship must be PARENT > CHILD. Othewise, ensure any extraneous children are skipped.");
+   }
+   if(direction === -1 && (($.fn.highlightNavigation.elemObjTag === "NAV" && $currentSelectedItem.prevAll("a").length) || typeof $currentSelectedItem.prev().prop("tagName") !== "undefined")){ //Go to previous item, if it exists, and apply selected class. Note the usage of prevAll below, which allows us to bypass extraneous items that may be located within the NAV and DL tags. You will want to add a else if here, if you need to do the same for any other elements.
     if($.fn.highlightNavigation.elemObjTag === "NAV"){
      $selectedItem = $currentSelectedItem.prevAll("a:first");
+    }
+    else if($.fn.highlightNavigation.elemObjTag === "DL"){
+     $selectedItem = $currentSelectedItem.prevAll("dt:first");
     }
     else{
      $selectedItem = $currentSelectedItem.prev();
     }
-    $selectedItem.addClass("selected");
+    $selectedItem.addClass("selected"); //apply selected class to new selected item.
    }
    else if(direction === 1 && (($.fn.highlightNavigation.elemObjTag === "NAV" && $currentSelectedItem.nextAll("a").length) || typeof $currentSelectedItem.next().prop("tagName") !== "undefined")){ //Go to next item, if it exists, and apply selected class.
-    selector = "a:first";
-    if($.fn.highlightNavigation.elemObjTag === "NAV"){
-     $selectedItem = $currentSelectedItem.nextAll("a:first");
-    }
-    else if($.fn.highlightNavigation.elemObjTag === "UL" || $.fn.highlightNavigation.elemObjTag === "OL"){
-     $selectedItem = $currentSelectedItem.nextAll("li:first");
-    }
-    else{
-     $selectedItem = $currentSelectedItem.next();
+    switch($.fn.highlightNavigation.elemObjTag){
+     case "NAV":
+      $selectedItem = $currentSelectedItem.nextAll("a:first");
+      break;
+     case "UL":
+      $selectedItem = $currentSelectedItem.nextAll("li:first");
+      break;
+     case "OL":
+      $selectedItem = $currentSelectedItem.nextAll("li:first");
+      break;
+     case "DL":
+      $selectedItem = $currentSelectedItem.nextAll("dt:first");
+      break;
+     default:
+      $selectedItem = $currentSelectedItem.next();
     }
     $selectedItem.addClass("selected");
    }
-   if(!$.isEmptyObject($selectedItem)){ //New item was properly selected
+   if(!$.isEmptyObject($selectedItem) && $selectedItem.length){ //New item was properly selected
     $currentSelectedItem.removeClass("selected"); //Remove selected class from current item.
     $.fn.highlightNavigation.selectedItem = $selectedItem; //Set new selectedItem.
     settings.onSelect(); //onSelect callback.
@@ -121,7 +133,10 @@
     case "NAV":
      return $.fn.highlightNavigation.self.find("a");
      break;
-    case $.fn.highlightNavigation.elemObjTag.length: //Catch all for other elements. This grabs all of the children belonging to it. You will want to override this for certain elements with items you do not want included, ie: if there are header, h1, etc. tags inside of your element.
+    case "DL":
+     return $.fn.highlightNavigation.self.find("dt");
+     break;
+    case $.fn.highlightNavigation.elemObjTag.length: //Catch all for other elements. This grabs all of the children belonging to it. You will want to override this by adding a case statement above for elements with any items you do not want included, ie: if there are header, h1, etc. tags inside of your element.
      return $.fn.highlightNavigation.self.children();
      break;
     default:
