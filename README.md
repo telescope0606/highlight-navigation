@@ -21,7 +21,7 @@ Additional test cases are very welcome.
 Contributing to Highlight Navigation
 ------------------------------------
 
-Contributions and pull requests are very welcome. 
+Contributions and pull requests are very welcome. Please have a look at my to do's in the js file notes. 
 
 Highlight Navigation Demos
 ---------------------------------------
@@ -36,7 +36,7 @@ Built by Stephanie Fischer. There really is not much coming out of my pocket for
 Styling
 -------
 
-The plugin is meant to not get in the way of your site’s styling. Therefore, its CSS file is minimal, with only a selected class, and a collapsed border for tables. The styles are limited to the plugin’s container, and won’t interfere with the rest of your site.
+The plugin is meant to not get in the way of your site’s styling. Therefore, its CSS file is minimal, with only a selected class, and a collapsed border for tables. The styles are limited to the plugin’s container, and won’t interfere with the rest of your site. Let me know what you think of this. Of course, you can always copy the CSS for the demos!
 
 API
 ---
@@ -200,6 +200,7 @@ In this example, we are overwriting the default keys for previous and next to be
 <br>
 To use this plugin with tables, you must have a tbody tag containing the rows you want to be navigable. The plugin explicitly looks for this, and this was done to allow the plugin to easily skip table header rows.
 In this example, we are working with JSON data that is fed to a Mustache template to create a table of users. We then call the Highlight Navigation plugin on this table to make it navigable. We want to perform an action when the user hits Enter or clicks on a table row. Again, we use the actionKeyPress and itemClick callbacks to do this.
+
 *Include necessary CSS and JS files*
 <code>
 
