@@ -15,6 +15,7 @@ The following elements have been tested with this plugin:
  - OL 
  - UL 
  - NAV
+ - DL
 
 Additional test cases are very welcome.
 
