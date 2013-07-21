@@ -99,13 +99,12 @@ Usage Examples
 
 
 *Include necessary CSS and JS files*
-
 <code> 
  
 
      <link rel="stylesheet" type="text/css" href="../highlight-navigation.css" />
-      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-      <script src="../jquery.highlight-navigation.js"></script>
+     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+     <script src="../jquery.highlight-navigation.js"></script>
 
 </code>
 
@@ -199,7 +198,7 @@ In this example, we are overwriting the default keys for previous and next to be
 
 ----------
 <br>
-
+To use this plugin with tables, you must have a tbody tag containing the rows you want to be navigable. The plugin explicitly looks for this, and this was done to allow the plugin to easily skip table header rows.
 In this example, we are working with JSON data that is fed to a Mustache template to create a table of users. We then call the Highlight Navigation plugin on this table to make it navigable. We want to perform an action when the user hits Enter or clicks on a table row. Again, we use the actionKeyPress and itemClick callbacks to do this.
 *Include necessary CSS and JS files*
 <code>
