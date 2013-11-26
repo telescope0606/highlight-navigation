@@ -2,7 +2,7 @@
  * Name: Highlight Navigation jQuery plugin
  * Author: Stephanie Fischer
  * Demos & documentation: https://github.com/telescope0606/highlight-navigation
- * Description: Provides keyboard and mouse navigation and highlighting for elements with items, such as rows belonging to tables, li's belonging to ul's and ol's, a's belonging to nav's, and dt's belonging to dl's. Currently only tested with these elements, but other elements should work as well, as long as there are no extraneous children that you do not want to be selectable within those. If there are, you will need to modify a couple spots to handle those cases. Those spots are denoted in the comments. Please extend if you see a need to. At this time, it will only work for one plugin instance. To do: enable more than one plugin instance & use a key to switch between them, allow a code edit in just one spot to ease modification needs for non-explicitly handled elements containing those extraneous children.
+ * Description: Provides keyboard and mouse navigation and highlighting for elements with items, such as rows belonging to tables, li's belonging to ul's and ol's, a's belonging to nav's, and dt's belonging to dl's. Currently only tested with these elements, but other elements should work as well, as long as there are no extraneous children that you do not want to be selectable within those. If there are, you will need to modify a couple spots to handle those cases. Those spots are denoted in the comments. Please extend if you see a need to. TODO: allow a code edit in just one spot to ease modification needs for non-explicitly handled elements containing those extraneous children.
  */
 ;(function($){
   var methods = {
