@@ -32,7 +32,7 @@ Demos are available here: http://telescope0606.github.io/
 Highlight Navigation Credits, Donations
 ---------------------------------------
 
-Built by Stephanie Fischer. There really is not much coming out of my pocket for this plugin, but I am struggling with Lyme disease and having to self-pay a good deal of the cost. If you would like to help, donations are appreciated. You can donate here: http://telescope0606.github.io/
+Built by Stephanie Fischer. Donations are appreciated. You can donate here: http://telescope0606.github.io/
 
 Styling
 -------
