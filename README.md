@@ -2,14 +2,14 @@
 ------------------------
 
 
-Highlight Navigation enables keyboard, mouse, and touch element highlighting and navigation. Highlight and navigate table rows by pressing configurable keys. Perform any action specified via callback by upon pressing enter key on a row. Built to work for all elements with children. Other elements that this plugin has been tested for and confirmed working are: UL, OL, and NAV. Additional elements should work as well, with some caveats that I will discuss below. For ease of configuration, the plugin is left open in that all methods are exposed, and there are callbacks for all of the plugin’s events.
+Highlight Navigation enables item highlighting and navigation for elements via mouse, keyboard, and touchscreen. Ever wanted to move down table rows via the up or down arrow keys? Did you ever also want to perfom some action, such as opening a new window to go to a related page  when the enter key was pressed? Don't forget highlighting whatever item you are on so you know where you are! Did you want to be able to do this for other elements on your site too, such as menus? And, you wanted to make sure that all this functionality was also available for the mouse and touch controls, right? Without writing a bunch of code to handle this all? Don't want to navigate with arrows? How about easily configuring what key does what action for your elements? Perhaps you prefer a "%" and a "^" to navigate, which I really don't recommend, but you get the point. So these are all things that this plugin handles. It is built to work for all elements with children. Elements that this plugin has been tested and confirmed working for are: TABLE, UL, OL, NAV, and DL. Additional elements will work as well, with some caveats that I will discuss below. No need to get too involved if you don't want to, but if you do, it's a very easy process. For ease of configuration and control, the plugin is left open in that all methods are exposed, and there are callbacks for all of the plugin’s events.
 
 **jQuery support**: 1.7.1+
 
 Testing
 -------
 
-The following elements have been tested with this plugin:
+The following elements have passed testing with this plugin:
 
  - TABLE
  - OL 
@@ -22,7 +22,7 @@ Additional test cases are very welcome.
 Contributing to Highlight Navigation
 ------------------------------------
 
-Contributions and pull requests are very welcome. Please have a look at my to do's in the js file notes. 
+Contributions and pull requests are very welcome! 
 
 Highlight Navigation Demos
 ---------------------------------------
@@ -37,7 +37,7 @@ Built by Stephanie Fischer. Donations are appreciated. You can donate here: http
 Styling
 -------
 
-The plugin is meant to not get in the way of your site’s styling. Therefore, its CSS file is minimal, with only a selected class, and a collapsed border for tables. The styles are limited to the plugin’s container, and won’t interfere with the rest of your site. Let me know what you think of this. Of course, you can always copy the CSS for the demos!
+The plugin is meant to not get in the way of your site’s styling, as I feel the elements you apply it to are already going to be styled just the way you need them to look. Therefore, its CSS file is minimal, with only a selected class, and a collapsed border for tables. The styles are limited to the plugin’s container, and won’t interfere with the rest of your site. Let me know what you think of this. Of course, you can always copy the CSS for the demos if needed!
 
 API
 ---
